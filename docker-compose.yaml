@@ -14,5 +14,5 @@ services:
               count: all
               capabilities: [gpu]
     volumes:
-      - /path/to/your/projects:/app
-
+      - /Documents:/app
+    restart: always
