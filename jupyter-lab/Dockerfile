@@ -8,7 +8,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends wget curl bzip2
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh \
     && /bin/bash /tmp/miniconda.sh -b -p /opt/conda \
     && rm /tmp/miniconda.sh \
-    && conda clean -tipsy
 
 # Install the necessary libraries via conda-forge
 RUN conda install -c conda-forge polars pytorch-cuda=12.8 plotnine jupyterlab -y
