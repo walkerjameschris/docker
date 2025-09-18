@@ -2,8 +2,8 @@
 FROM nvidia/cuda:12.4.1-base-ubuntu22.04
 
 # Install python
-RUN apt install python3.12
-RUN apt install python3-pip
+RUN apt-get install -y --no-install-recommends python3.12
+RUN apt-get install -y --no-install-recommends python3-pip
 RUN pip install jupyterlab
 
 # Install PyTorch and its dependencies from the official nightly build URL
