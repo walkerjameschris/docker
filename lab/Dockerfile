@@ -8,8 +8,7 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py312_24.1.2-0-Linux-x86
 
 ENV PATH="/opt/conda/bin:$PATH"
 
-RUN conda install -c pytorch -c nvidia -y pytorch torchvision torchaudio pytorch-cuda=12.1 jupyterlab && \
-    conda clean -tipsy
+RUN conda install -c pytorch -c nvidia -y pytorch torchvision torchaudio pytorch-cuda=12.1 jupyterlab
 
 WORKDIR /app
 
