@@ -1,17 +1,14 @@
-FROM nvidia/cuda:12.4.1-base-ubuntu22.04
+# Use the official NVIDIA CUDA base image for PyTorch with a specific Ubuntu version and CUDA toolkit.
+FROM pytorch/pytorch:2.3.0-cuda12.1-cudnn8-runtime
 
-RUN apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
+# Install JupyterLab and clean up unnecessary files to reduce image size.
+RUN pip install jupyterlab
 
-RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py312_24.1.2-0-Linux-x86_64.sh -O /tmp/miniconda.sh && \
-    bash /tmp/miniconda.sh -b -p /opt/conda && \
-    rm /tmp/miniconda.sh
-
-ENV PATH="/opt/conda/bin:$PATH"
-
-RUN conda install -c pytorch -c nvidia -y pytorch torchvision torchaudio pytorch-cuda=12.1 jupyterlab
-
+# Set the working directory inside the container.
 WORKDIR /app
 
+# Expose port 8888 for JupyterLab.
 EXPOSE 8888
 
+# Command to start JupyterLab with specific settings for containerized use.
 CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--no-browser", "--LabApp.token=''"]
