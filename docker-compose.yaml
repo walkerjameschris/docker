@@ -1,0 +1,18 @@
+services:
+  lab:
+    build:
+      context: ./jupyter-lab
+      dockerfile: Dockerfile
+    container_name: jupyter-lab
+    ports:
+      - "8888:8888"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    volumes:
+      - /path/to/your/projects:/app
+
