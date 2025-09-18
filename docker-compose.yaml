@@ -1,9 +1,9 @@
 services:
   lab:
     build:
-      context: ./jupyter-lab
+      context: ./lab
       dockerfile: Dockerfile
-    container_name: jupyter-lab
+    container_name: lab
     ports:
       - "8888:8888"
     deploy:
