@@ -9,8 +9,9 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86
     && /bin/bash /tmp/miniconda.sh -b -p /opt/conda \
     && rm /tmp/miniconda.sh
 
-# Install the necessary libraries via conda-forge
-RUN conda install -c conda-forge polars pytorch-cuda=12.8 plotnine jupyterlab -y
+# Install the necessary libraries
+RUN pip3 install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+RUN pip3 install polars plotnine jupyterlab
 
 # Set the working directory
 WORKDIR /app
