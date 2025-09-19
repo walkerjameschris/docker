@@ -1,9 +1,7 @@
 services:
   lab:
-    build:
-      context: ./lab
-      dockerfile: Dockerfile
+    image: lab
+    container_name: lab
+    restart: always
     ports:
       - "8888:8888"
-      - /Documents:/app
-    restart: always
