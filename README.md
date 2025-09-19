@@ -2,9 +2,9 @@
 
 ## Primary Setup
 
-This repo contains Docker image configurations for my home server.
-Before installing Docker and running the images, I set up a few
-things on the server running **Ubuntu 24.04 LTS:**
+This repo contains configurations and services for my home server.
+These steps define the primary requirements needed by the system
+to get up and running.
 
 - Settings >> Power >> Performance >> Screen Blank (Never)
 - Install `curl` with `sudo apt install curl`
