@@ -1,5 +1,6 @@
 services:
   lab:
+    restart: unless-stopped
     container_name: lab
     restart: always
     ports:
