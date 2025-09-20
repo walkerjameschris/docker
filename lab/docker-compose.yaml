@@ -9,10 +9,3 @@ services:
       - "8888:8888"
     volumes:
       - /home/treehouse/Documents:/home/jovyan/Documents
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
