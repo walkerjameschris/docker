@@ -26,8 +26,8 @@ to get up and running.
   - Mount the array with `mkdir /mnt/raid; sudo mount /dev/md<location> /mnt/raid`
   - Determine the block ID with `sudo blkid /dev/md127`
   - Create a persistent mount with `sudo sh -c 'echo "UUID=<block ID> /mnt/raid ext4 defaults 0 0" >> /etc/fstab'`
-- Install NVIDIA toolkit with `sudo apt install nvidia-container-toolkit`
-- Install Docker with `sudo apt install docker.io`
+- Install [Docker Desktop](https://docs.docker.com/desktop/setup/install/linux/ubuntu/) 
+- Install [NVIDIA Container Dolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
 - Set the NVIDIA toolkit to always run `sudo nvidia-ctk runtime configure --runtime=docker`
 - Reboot with `sudo reboot`
-- Run services with `sudo docker compose up --build`
+- Run `lab/` with `sudo docker compose up --build`
