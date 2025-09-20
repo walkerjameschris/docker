@@ -3,7 +3,7 @@ services:
     container_name: lab
     restart: unless-stopped
     build:
-      context: .
+      context: ./lab/
       dockerfile: Dockerfile
     ports:
       - "8888:8888"
@@ -16,3 +16,22 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+              
+volumes:
+  ollama-data:
+    
