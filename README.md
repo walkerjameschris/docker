@@ -21,3 +21,6 @@ to get up and running.
   - `sudo apt install mdadm`
   - Ensure all 4 drives are **partition free** and named `sd[a-d]`
   - `sudo mdadm --create /dev/md0 --level=6 --raid-devices=4 /dev/sda /dev/sdb /dev/sdc /dev/sdd`
+- Install NVIDIA toolkit with `sudo apt install nvidia-container-toolkit`
+- Install Docker with `sudo apt install docker.io`
+- Run services with `sudo docker compose up --build`
