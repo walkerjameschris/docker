@@ -18,9 +18,14 @@ to get up and running.
   - `sudo apt install gh`
   - `gh auth login`
 - Setup RAID 6 array with:
-  - `sudo apt install mdadm`
+  - Install `mdadm` with `sudo apt install mdadm`
   - Ensure all 4 drives are **partition free** and named `sd[a-d]`
-  - `sudo mdadm --create /dev/md0 --level=6 --raid-devices=4 /dev/sda /dev/sdb /dev/sdc /dev/sdd`
+  - Create the array `sudo mdadm --create /dev/md0 --level=6 --raid-devices=4 /dev/sda /dev/sdb /dev/sdc /dev/sdd` 
+  - Determine the current location with `/proc/mdstat` (wait until complete, this can take a long time)
+  - Format the array with `sudo fsck.ext4 /dev/md<location>`
+  - Mount the array with `mkdir /mnt/raid; sudo mount /dev/md<location> /mnt/raid`
+  - Determine the block ID with `sudo blkid /dev/md127`
+  - Create a persistent mount with `sudo sh -c 'echo "UUID=<block ID> /mnt/raid ext4 defaults 0 0" >> /etc/fstab'`
 - Install NVIDIA toolkit with `sudo apt install nvidia-container-toolkit`
 - Install Docker with `sudo apt install docker.io`
 - Run services with `sudo docker compose up --build`
