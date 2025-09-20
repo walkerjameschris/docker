@@ -14,3 +14,6 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
+    volumes:
+      - ~/.ssh:/root/.ssh:ro
+      - ~/.gitconfig:/root/.gitconfig:ro
