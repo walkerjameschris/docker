@@ -1,4 +1,4 @@
-# Homelab
+# `treehouse` 🌳🏘️
 
 ## Primary Setup
 
