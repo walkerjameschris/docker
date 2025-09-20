@@ -28,4 +28,6 @@ to get up and running.
   - Create a persistent mount with `sudo sh -c 'echo "UUID=<block ID> /mnt/raid ext4 defaults 0 0" >> /etc/fstab'`
 - Install NVIDIA toolkit with `sudo apt install nvidia-container-toolkit`
 - Install Docker with `sudo apt install docker.io`
+- Set the NVIDIA toolkit to always run `sudo nvidia-ctk runtime configure --runtime=docker`
+- Reboot with `sudo reboot`
 - Run services with `sudo docker compose up --build`
