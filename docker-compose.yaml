@@ -3,9 +3,6 @@ services:
     build:
       context: ./lab
       dockerfile: Dockerfile
-      args:
-        - GITHUB_USERNAME=${GITHUB_USERNAME}
-        - GITHUB_PAT=${GITHUB_PAT}
     container_name: lab
     restart: always
     ports:
