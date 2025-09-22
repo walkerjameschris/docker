@@ -9,6 +9,7 @@ to get up and running.
 - Settings >> Power >> Performance >> Screen Blank (Never)
 - Install NVIDIA driver with:
   - Determine driver with `sudo ubuntu-drivers devices`
+  - Update lists with `sudo apt-get update`
   - Install NVIDIA recommended driver (most likely `nvidia-driver-570`)
   - `sudo reboot`
 - Install `curl` with `sudo apt install curl`
