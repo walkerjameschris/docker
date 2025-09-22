@@ -7,12 +7,15 @@ These steps define the primary requirements needed by the system
 to get up and running.
 
 - Settings >> Power >> Performance >> Screen Blank (Never)
+- Install NVIDIA driver with:
+  - Determine driver with `sudo ubuntu-drivers devices`
+  - Install NVIDIA recommended driver
+  - `sudo reboot`
 - Install `curl` with `sudo apt install curl`
 - Install `tailscale` for VPN with:
   - `curl -fsSL https://tailscale.com/install.sh | sh`
   - `sudo tailscale up`
   - `sudo tailscale set --ssh`
-- Install drivers with `sudo ubuntu-drivers install` (then `sudo reboot`)
 - Install `git` to clone this repo with `sudo apt install git`
 - Install `gh` for auth with:
   - `sudo apt install gh`
