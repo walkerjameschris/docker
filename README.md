@@ -31,6 +31,7 @@ to get up and running.
   - **Reinstall OS, Existing RAID:**
     - Find drives with `sudo mdadm --examine --scan`
     - Attach drives with `sudo mdadm --assemble --scan`
+    - Determine the current location with `/proc/mdstat`
   - **Finish Setup:**
     - Determine the block ID with `sudo blkid /dev/md127`
     - Create a persistent mount with `sudo sh -c 'echo "UUID=<block ID> /mnt/raid ext4 defaults 0 0" >> /etc/fstab'`
