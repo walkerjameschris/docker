@@ -33,7 +33,7 @@ to get up and running.
     - Attach drives with `sudo mdadm --assemble --scan`
     - Determine the current location with `cat /proc/mdstat`
   - **Finish Setup:**
-    - Determine the block ID with `sudo blkid /dev/md127`
+    - Determine the block ID with `sudo blkid /dev/<location>`
     - Create a persistent mount with `sudo sh -c 'echo "UUID=<block ID> /mnt/raid ext4 defaults 0 0" >> /etc/fstab'`
 - Install [Docker Desktop](https://docs.docker.com/desktop/setup/install/linux/ubuntu/) 
 - Install [NVIDIA Container Dolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
