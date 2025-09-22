@@ -40,4 +40,4 @@ to get up and running.
 - Set the NVIDIA toolkit to always run `sudo nvidia-ctk runtime configure --runtime=docker`
 - Reboot with `sudo reboot`
 - Run `lab/` with `sudo docker compose up --build`
-- Install [Steam](https://store.steampowered.com/about/)
+- Install [Steam](https://store.steampowered.com/about/) (you need `gdebi` with `sudo apt install gdebi`)
