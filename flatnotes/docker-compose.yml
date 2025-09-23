@@ -5,12 +5,10 @@ services:
     environment:
       PUID: 1000
       PGID: 1000
-      FLATNOTES_AUTH_TYPE: "password"
-      FLATNOTES_USERNAME: "user"
-      FLATNOTES_PASSWORD: "changeMe!"
-      FLATNOTES_SECRET_KEY: "aLongRandomSeriesOfCharacters"
+      FLATNOTES_AUTH_TYPE: "none"
     volumes:
       - "/mnt/raid/flattnoes/:/data"
     ports:
       - "8080:8080"
     restart: unless-stopped
+
