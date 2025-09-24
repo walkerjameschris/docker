@@ -1,0 +1,9 @@
+services:
+  monitor:
+    container_name: monitor
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
