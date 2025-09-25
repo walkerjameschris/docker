@@ -1,5 +1,5 @@
-import subprocess
 from shiny import App, ui, reactive, render
+import subprocess
 
 def get_sensors_temp():
     try:
@@ -30,7 +30,6 @@ def get_nvidia_temp():
         return "N/A"
 
 def make_card(title, value, unit="", color_class="bg-primary"):
-    """Simple Bootstrap card with minimal CSS and fixed max width."""
     return ui.div(
         ui.div(
             ui.h5(title, class_="card-title mb-2 text-white"),
@@ -53,20 +52,20 @@ app_ui = ui.page_fluid(
 
 def server(input, output, session):
 
-    # Reactive timer triggers every 10 seconds
-    timer = reactive.Timer(1 * 1000, session)
+    # Create timer inside server (important!)
+    timer = reactive.Timer(10 * 1000, session)
 
     @output
     @render.ui
     def temp_card():
-        timer()  # register dependency to auto-refresh
+        timer()  # invalidate every 10 seconds
         temp = get_sensors_temp()
         return make_card("CPU Temp", temp, color_class="bg-warning")
 
     @output
     @render.ui
     def gpu_card():
-        timer()  # register dependency to auto-refresh
+        timer()  # invalidate every 10 seconds
         gpu_temp = get_nvidia_temp()
         return make_card("GPU Temp", gpu_temp, color_class="bg-success")
 
