@@ -2,7 +2,7 @@ from shiny import App, ui, reactive, render
 import random
 import subprocess
 
-def get_cpu_temp_tctl():
+def get_sensors_output():
     try:
         # Run sensors piped to grep Tctl, using shell=True for the pipe
         result = subprocess.run(
@@ -33,6 +33,7 @@ def server(input, output, session):
         return get_sensors_output()
         
 app = App(app_ui, server)
+
 
 
 
