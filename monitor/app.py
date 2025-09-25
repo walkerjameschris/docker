@@ -1,5 +1,5 @@
-import subprocess
 from shiny import App, ui, reactive, render
+import subprocess
 
 def get_sensors_temp():
     try:
@@ -30,21 +30,25 @@ def get_nvidia_temp():
         return "N/A"
 
 def make_card(title, value, unit="", color_class="bg-primary"):
+    """Simple Bootstrap card with minimal CSS and fixed max width."""
     return ui.div(
         ui.div(
             ui.h5(title, class_="card-title mb-2 text-white"),
             ui.h3(f"{value} {unit}".strip(), class_="card-text text-white"),
             class_="card-body text-center"
         ),
-        class_=f"card {color_class} mb-3"
+        class_=f"card {color_class} mb-3",
+        style="max-width: 160px; margin-left: auto; margin-right: auto;"
     )
 
 app_ui = ui.page_fluid(
-    ui.h2("Server Readouts", class_="mb-4"),
+    ui.h2("Server Status", class_="mb-4"),
     ui.row(
         ui.column(3, ui.output_ui("temp_card")),
         ui.column(3, ui.output_ui("gpu_card"))
-    )
+    ),
+    class_="bg-dark text-white",
+    style="min-height: 100vh; padding: 20px;"
 )
 
 def server(input, output, session):
