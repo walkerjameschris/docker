@@ -4,7 +4,7 @@ import subprocess
 
 def get_sensors_output():
     try:
-        result = subprocess.run(["sensors | grep 'Tctl'"], capture_output=True, text=True, check=True)
+        result = subprocess.run(["sensors | grep Tctl"], capture_output=True, text=True, check=True)
         return result.stdout
     except subprocess.CalledProcessError as e:
         return f"Error calling sensors: {e}"
@@ -24,6 +24,7 @@ def server(input, output, session):
         return get_sensors_output()
         
 app = App(app_ui, server)
+
 
 
 
