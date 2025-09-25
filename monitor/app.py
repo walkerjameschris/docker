@@ -1,8 +1,7 @@
 from shiny import App, ui, reactive, render
-import subprocess
 
 def get_cpu_temp():
-    return "1"
+    return "1"  # Replace with actual logic if needed
 
 app_ui = ui.page_fluid(
     ui.card(
@@ -12,10 +11,14 @@ app_ui = ui.page_fluid(
 )
 
 def server(input, output, session):
-    @reactive.Effect
+    @reactive.calc
     @reactive.periodic(10)
-    def _():
-        output.temp = render.text(f"CPU Temp: {get_cpu_temp()}°C")
+    def current_temp():
+        return get_cpu_temp()
+
+    @output
+    @render.text
+    def temp():
+        return f"CPU Temp: {current_temp()}°C"
 
 app = App(app_ui, server)
-
