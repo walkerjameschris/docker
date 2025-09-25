@@ -11,14 +11,9 @@ app_ui = ui.page_fluid(
 )
 
 def server(input, output, session):
-    @reactive.calc
-    @reactive.periodic(10)
-    def current_temp():
-        return get_cpu_temp()
 
-    @output
-    @render.text
     def temp():
-        return f"CPU Temp: {current_temp()}°C"
+        return f"CPU Temp: {get_cpu_temp()}°C"
 
 app = App(app_ui, server)
+
