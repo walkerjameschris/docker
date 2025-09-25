@@ -11,3 +11,10 @@ services:
     volumes:
       - /sys:/sys
       - /proc:/proc
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
