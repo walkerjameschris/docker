@@ -1,5 +1,5 @@
-from shiny import App, ui, reactive, render
 import subprocess
+from shiny import App, ui, reactive, render
 
 def get_sensors_temp():
     try:
@@ -38,11 +38,11 @@ def make_card(title, value, unit="", color_class="bg-primary"):
             class_="card-body text-center"
         ),
         class_=f"card {color_class} mb-3",
-        style="max-width: 160px; margin-left: auto; margin-right: auto;"
+        style="max-width: 220px; margin-left: auto; margin-right: auto;"
     )
 
 app_ui = ui.page_fluid(
-    ui.h2("Server Status", class_="mb-4"),
+    ui.h2("Server Readouts", class_="mb-4"),
     ui.row(
         ui.column(3, ui.output_ui("temp_card")),
         ui.column(3, ui.output_ui("gpu_card"))
@@ -53,15 +53,20 @@ app_ui = ui.page_fluid(
 
 def server(input, output, session):
 
+    # Reactive timer triggers every 10 seconds
+    timer = reactive.Timer(1 * 1000, session)
+
     @output
     @render.ui
     def temp_card():
+        timer()  # register dependency to auto-refresh
         temp = get_sensors_temp()
         return make_card("CPU Temp", temp, color_class="bg-warning")
 
     @output
     @render.ui
     def gpu_card():
+        timer()  # register dependency to auto-refresh
         gpu_temp = get_nvidia_temp()
         return make_card("GPU Temp", gpu_temp, color_class="bg-success")
 
