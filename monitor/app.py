@@ -1,5 +1,5 @@
-from shiny import App, ui, reactive, render
 import subprocess
+from shiny import App, ui, reactive, render
 
 def get_sensors_temp():
     try:
@@ -52,21 +52,17 @@ app_ui = ui.page_fluid(
 
 def server(input, output, session):
 
-    # Create timer inside server (important!)
-    timer = reactive.Timer(10 * 1000, session)
-
     @output
     @render.ui
     def temp_card():
-        timer()  # invalidate every 10 seconds
         temp = get_sensors_temp()
         return make_card("CPU Temp", temp, color_class="bg-warning")
 
     @output
     @render.ui
     def gpu_card():
-        timer()  # invalidate every 10 seconds
         gpu_temp = get_nvidia_temp()
         return make_card("GPU Temp", gpu_temp, color_class="bg-success")
 
 app = App(app_ui, server)
+
