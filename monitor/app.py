@@ -10,7 +10,10 @@ app_ui = ui.page_fluid(
 
 def server(input, output, session):
 
+    @output
+    @render.text
     def temp():
         return f"CPU Temp: {random.random()}"
 
 app = App(app_ui, server)
+
