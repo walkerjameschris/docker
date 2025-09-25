@@ -4,4 +4,4 @@ app_ui = ui.page_fluid(
     ui.card(1)
 )
 
-app = App(app_ui)
+app = App(app_ui, None)
