@@ -1,5 +1,6 @@
 from shiny import App, ui, reactive, render
 import random
+import subprocess
 
 def get_sensors_output():
     try:
@@ -23,5 +24,6 @@ def server(input, output, session):
         return get_sensors_output()
         
 app = App(app_ui, server)
+
 
 
