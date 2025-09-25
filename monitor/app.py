@@ -1,5 +1,5 @@
-from shiny import App, ui, reactive, render
 import subprocess
+from shiny import App, ui, reactive, render
 
 def get_sensors_temp():
     try:
@@ -10,59 +10,40 @@ def get_sensors_temp():
             text=True,
             check=True
         )
-        # Extract just the temperature number, e.g. +50.0°C
         line = result.stdout.strip()
-        # Example line: "Tctl: +50.0°C (high = +80.0°C)"
         temp = line.split()[1] if line else "N/A"
         return temp
     except subprocess.CalledProcessError:
         return "N/A"
 
-def get_nvidia_smi():
+def get_nvidia_temp():
     try:
-        # Run nvidia-smi to get GPU utilization and temp summary
         result = subprocess.run(
-            ["nvidia-smi", "--query-gpu=temperature.gpu,utilization.gpu", "--format=csv,noheader,nounits"],
+            ["nvidia-smi", "--query-gpu=temperature.gpu", "--format=csv,noheader,nounits"],
             capture_output=True,
             text=True,
             check=True
         )
-        # Output example: "50, 25"
-        output = result.stdout.strip()
-        if output:
-            temp, util = output.split(", ")
-            return f"{temp}°C, {util}%"
-        return "N/A"
+        temp = result.stdout.strip()
+        return f"{temp}°C" if temp else "N/A"
     except subprocess.CalledProcessError:
         return "N/A"
 
-def make_card(title, value, unit="", color="#3498db"):
-    """Return a UI box with nice styling."""
+def make_card(title, value, unit="", color_class="bg-primary"):
     return ui.div(
-        ui.h4(title, style="margin-bottom: 5px; color: white;"),
-        ui.h2(f"{value} {unit}".strip(), style="margin: 0; color: white;"),
-        style=f"""
-            background-color: {color};
-            padding: 15px;
-            border-radius: 8px;
-            width: 180px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        """
+        ui.div(
+            ui.h5(title, class_="card-title mb-2 text-white"),
+            ui.h3(f"{value} {unit}".strip(), class_="card-text text-white"),
+            class_="card-body text-center"
+        ),
+        class_=f"card {color_class} mb-3"
     )
 
 app_ui = ui.page_fluid(
-    ui.h2("Server Readouts", style="margin-bottom: 20px;"),
+    ui.h2("Server Readouts", class_="mb-4"),
     ui.row(
-        ui.column(
-            3,
-            ui.output_ui("temp_card")
-        ),
-        ui.column(
-            3,
-            ui.output_ui("gpu_card")
-        )
+        ui.column(3, ui.output_ui("temp_card")),
+        ui.column(3, ui.output_ui("gpu_card"))
     )
 )
 
@@ -72,12 +53,12 @@ def server(input, output, session):
     @render.ui
     def temp_card():
         temp = get_sensors_temp()
-        return make_card("CPU Temp", temp, color="#e67e22")
+        return make_card("CPU Temp", temp, color_class="bg-warning")
 
     @output
     @render.ui
     def gpu_card():
-        gpu_status = get_nvidia_smi()
-        return make_card("GPU Temp / Util", gpu_status, color="#27ae60")
+        gpu_temp = get_nvidia_temp()
+        return make_card("GPU Temp", gpu_temp, color_class="bg-success")
 
 app = App(app_ui, server)
