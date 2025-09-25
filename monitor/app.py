@@ -2,11 +2,7 @@ from shiny import App, ui, reactive, render
 import subprocess
 
 def get_cpu_temp():
-    out = subprocess.run(["sensors"], capture_output=True, text=True).stdout
-    for line in out.splitlines():
-        if "Package id 0" in line or "Tctl" in line:
-            return line.split()[1].strip("+°C")
-    return "N/A"
+    return "1"
 
 app_ui = ui.page_fluid(
     ui.card(
@@ -22,3 +18,4 @@ def server(input, output, session):
         output.temp = render.text(f"CPU Temp: {get_cpu_temp()}°C")
 
 app = App(app_ui, server)
+
