@@ -2,12 +2,21 @@ from shiny import App, ui, reactive, render
 import random
 import subprocess
 
-def get_sensors_output():
+def get_cpu_temp_tctl():
     try:
-        result = subprocess.run(["sensors | grep Tctl"], capture_output=True, text=True, check=True)
-        return result.stdout
+        # Run sensors piped to grep Tctl, using shell=True for the pipe
+        result = subprocess.run(
+            "sensors | grep Tctl",
+            shell=True,
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        output = result.stdout.strip()
+        return output  # This is the whole matching line, e.g. "Tctl: +50.0°C (high = +80.0°C)"
     except subprocess.CalledProcessError as e:
-        return f"Error calling sensors: {e}"
+        print(f"Error running sensors grep: {e}")
+        return None
 
 app_ui = ui.page_fluid(
     ui.card(
@@ -24,6 +33,7 @@ def server(input, output, session):
         return get_sensors_output()
         
 app = App(app_ui, server)
+
 
 
 
