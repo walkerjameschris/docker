@@ -6,9 +6,9 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "2222:22"
+      - "8888:8888"
     volumes:
-      - /home/treehouse/Documents:/home/lab/Documents
+      - /home/treehouse/Documents:/home/jovyan/Documents
     deploy:
       resources:
         reservations:
