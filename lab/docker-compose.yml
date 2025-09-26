@@ -9,6 +9,8 @@ services:
       - "8888:8888"
     volumes:
       - /home/treehouse/Documents:/home/jovyan/Documents
+    networks:
+      - external_network
     deploy:
       resources:
         reservations:
@@ -16,3 +18,8 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
+            
+networks:
+    external_network:
+      external: true
+      name: ollama-net
