@@ -8,7 +8,7 @@ services:
     ports:
       - "8888:8888"
     volumes:
-      - /home/treehouse/Documents:/home/jovyan/Documents
+      - /home/treehouse/Documents:/home/lab/Documents
     deploy:
       resources:
         reservations:
