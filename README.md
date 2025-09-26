@@ -41,3 +41,4 @@ to get up and running.
 - Reboot with `sudo reboot`
 - Run `lab/` with `sudo docker compose up --build`
 - Install [Steam](https://store.steampowered.com/about/) (you need `gdebi` with `sudo apt install gdebi`)
+- Run `ollama-net` for cross container communication with `sudo docker network create ollama-net`
