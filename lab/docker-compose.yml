@@ -6,13 +6,9 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8888:8080"
+      - "8888:8888"
     volumes:
-      - /home/treehouse/Documents:/home/lab/Documents
-    networks:
-      - external_network
-    environment:
-      - OLLAMA_HOST=http://ollama:11434
+      - /home/treehouse/Documents:/home/jovyan/Documents
     deploy:
       resources:
         reservations:
@@ -20,8 +16,4 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
-            
-networks:
-    external_network:
-      external: true
-      name: ollama-net
+              
