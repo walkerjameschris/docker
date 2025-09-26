@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   ollama:
     image: ollama/ollama:latest
@@ -6,20 +8,7 @@ services:
       - "11434:11434"
     volumes:
       - ollama_models:/root/.ollama
-    command: >
-      /bin/sh -c "
-      ollama serve &
-      sleep 5
-      ollama pull gemma3:1b
-      ollama pull embeddinggemma
-      fg
-      "
     restart: unless-stopped
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - capabilities: ["gpu"]
 
 volumes:
   ollama_models:
