@@ -10,9 +10,9 @@ RUN pip install plotnine polars pyarrow scikit-learn ollama
 RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cu129
 
 # Create user
+RUN useradd -m -s /bin/zsh lab
 USER lab
 WORKDIR /home/lab/Documents
-RUN useradd -m -s /bin/zsh lab
 
 # Apply user settings
 RUN echo "source /opt/conda/etc/profile.d/conda.sh" >> /home/lab/.zshrc
