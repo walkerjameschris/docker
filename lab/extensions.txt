@@ -1,0 +1,3 @@
+ms-python.python
+ms-pyright.pyright
+ms-toolsai.jupyter
