@@ -1,8 +1,6 @@
 {
   "workbench.colorTheme": "Default Dark+",
   "terminal.integrated.defaultProfile.linux": "zsh",
-  "terminal.integrated.shellArgs.linux": ["-c", "ipython"],
-
   "python.analysis.typeCheckingMode": "basic",
   "python.analysis.autoImportCompletions": true,
   "python.analysis.packageIndexDepths": [
@@ -31,5 +29,3 @@
   "python.testing.unittestEnabled": true,
   "python.testing.pytestEnabled": true
 }
-
-
