@@ -6,8 +6,9 @@ RUN apt-get update && apt-get install -y curl zsh
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 
 # Python packages + special index for CUDA PyTorch
-RUN pip install plotnine polars pyarrow scikit-learn ollama
+RUN pip install plotnine polars pyarrow scikit-learn ollama 
 RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cu129
+RUN conda install -y ipython
 
 # Create user
 RUN useradd -m -s /bin/zsh lab
