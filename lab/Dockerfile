@@ -1,31 +1,32 @@
 # Base image
-FROM continuumio/miniconda3
+FROM ubuntu:24.04
 
-# Update system and install necessary packages (curl, zsh)
-RUN apt-get update && apt-get install -y --no-install-recommends curl zsh
+# Install Miniconda to /root/miniconda3
+RUN apt-get install curl 
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+RUN bash miniconda.sh -b -p /root/miniconda3 &&
+RUN rm miniconda.sh
+
+# Add conda to PATH
+ENV PATH="/root/miniconda3/bin:$PATH"
 
 # Install code-server
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 
-# Python packages + special index for CUDA PyTorch
+# Install Python packages into (base) conda env
 RUN pip install plotnine polars pyarrow scikit-learn ollama
 RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cu129
-RUN conda install -y ipython
 
-# Install extensions (these will be installed for the root user)
+# Install code-server extensions
 RUN code-server --install-extension ms-python.python
 RUN code-server --install-extension ms-pyright.pyright
 RUN code-server --install-extension ms-toolsai.jupyter
 
-# Configure root's shell to automatically activate the conda base environment
-RUN echo "source /opt/conda/etc/profile.d/conda.sh" >> /root/.zshrc
-RUN echo "conda activate base" >> /root/.zshrc
-
-# Copy the settings.json file to root's configuration directory
+# Copy VSCode settings
 COPY settings.json /root/.local/share/code-server/User/settings.json
 
-# Expose the default port
+# Expose code-server port
 EXPOSE 8080
 
-# Run the server as the root user
+# Run code-server
 CMD ["code-server", "--bind-addr", "0.0.0.0:8080", "--auth", "none"]
