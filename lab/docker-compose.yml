@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8888:8888"
+      - "8888:8080"
     volumes:
       - /home/treehouse/Documents:/home/lab/Documents
     deploy:
