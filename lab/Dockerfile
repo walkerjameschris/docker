@@ -11,6 +11,8 @@ RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/c
 
 # Create user
 RUN useradd -m -s /bin/zsh lab
+RUN mkdir -p /home/lab/.local/share/code-server
+RUN chown -R lab:lab /home/lab/.local
 USER lab
 WORKDIR /home/lab/Documents
 
