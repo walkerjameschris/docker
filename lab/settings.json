@@ -1,0 +1,11 @@
+{
+  "workbench.colorTheme": "Default Dark+",
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "python.languageServer": "Pylance", 
+  "python.analysis.typeCheckingMode": "basic",
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintArgs": ["--disable=C0114"],
+  "python.formatting.provider": "autopep8",
+  "python.testing.unittestEnabled": true
+}
