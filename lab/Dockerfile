@@ -1,8 +1,10 @@
 # Base image
 FROM continuumio/miniconda3
 
-# Termainl, system dependencies, and Code Server
-RUN apt-get update && apt-get install -y curl zsh
+# Update system and install necessary packages (curl, zsh)
+RUN apt-get update && apt-get install -y --no-install-recommends curl zsh
+
+# Install code-server
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 
 # Python packages + special index for CUDA PyTorch
@@ -10,25 +12,20 @@ RUN pip install plotnine polars pyarrow scikit-learn ollama
 RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cu129
 RUN conda install -y ipython
 
-# Create user
-RUN useradd -m -s /bin/zsh lab
-RUN mkdir -p /home/lab/.local/share/code-server
-RUN mkdir -p /home/lab/.config
-
-# Switch to the lab user
-USER lab
-WORKDIR /home/lab/Documents
-
-# Apply user settings
-RUN echo "source /opt/conda/etc/profile.d/conda.sh" >> /home/lab/.zshrc
-RUN echo "conda activate base" >> /home/lab/.zshrc
-COPY settings.json /home/lab/.local/share/code-server/User/settings.json
-
-# Install extensions as the lab user to avoid permission errors
+# Install extensions (these will be installed for the root user)
 RUN code-server --install-extension ms-python.python
 RUN code-server --install-extension ms-pyright.pyright
 RUN code-server --install-extension ms-toolsai.jupyter
 
-# Run the server
+# Configure root's shell to automatically activate the conda base environment
+RUN echo "source /opt/conda/etc/profile.d/conda.sh" >> /root/.zshrc
+RUN echo "conda activate base" >> /root/.zshrc
+
+# Copy the settings.json file to root's configuration directory
+COPY settings.json /root/.local/share/code-server/User/settings.json
+
+# Expose the default port
 EXPOSE 8080
+
+# Run the server as the root user
 CMD ["code-server", "--bind-addr", "0.0.0.0:8080", "--auth", "none"]
