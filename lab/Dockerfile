@@ -1,22 +1,22 @@
 # Base image
 FROM continuumio/miniconda3
 
-# Create user
-USER lab
-WORKDIR /home/lab/Documents
-
-# Termainl and system dependencies
+# Termainl, system dependencies, and Code Server
 RUN apt-get update && apt-get install -y curl zsh
 RUN curl -fsSL https://code-server.dev/install.sh | sh
-RUN useradd -m -s /bin/zsh lab
-RUN echo "source /opt/conda/etc/profile.d/conda.sh" >> /home/lab/.zshrc
-RUN echo "conda activate base" >> /home/lab/.zshrc
 
 # Python packages + special index for CUDA PyTorch
 RUN pip install plotnine polars pyarrow scikit-learn ollama
 RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cu129
 
+# Create user
+USER lab
+WORKDIR /home/lab/Documents
+RUN useradd -m -s /bin/zsh lab
+
 # Apply user settings
+RUN echo "source /opt/conda/etc/profile.d/conda.sh" >> /home/lab/.zshrc
+RUN echo "conda activate base" >> /home/lab/.zshrc
 COPY settings.json /home/lab/.local/share/code-server/User/settings.json
 COPY extensions.txt /home/lab/extensions.txt
 
