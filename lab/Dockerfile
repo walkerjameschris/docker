@@ -20,11 +20,10 @@ RUN echo "conda activate base" >> /home/lab/.zshrc
 COPY settings.json /home/lab/.local/share/code-server/User/settings.json
 COPY extensions.txt /home/lab/extensions.txt
 
-# Install extensions and fix ownership
-RUN mkdir -p /home/lab/.local/share/code-server/User
-RUN code-server --version
-RUN cat /home/lab/extensions.txt | while read ext; do code-server --install-extension "$ext"; done
-RUN chown -R lab:lab /home/lab
+# Install extensions
+RUN code-server --install-extension ms-python.python
+RUN code-server --install-extension ms-pyright.pyright
+RUN code-server --install-extension ms-toolsai.jupyter
 
 # Run the server
 EXPOSE 8080
