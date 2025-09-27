@@ -12,6 +12,7 @@ RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/c
 # Create user
 RUN useradd -m -s /bin/zsh lab
 RUN mkdir -p /home/lab/.local/share/code-server
+RUN mkdir -p /home/lab/.config
 
 # Install extensions as root
 RUN code-server --install-extension ms-python.python
