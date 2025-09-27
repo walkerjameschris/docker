@@ -6,7 +6,7 @@ USER lab
 WORKDIR /home/lab/Documents
 
 # Termainl and system dependencies
-RUN apt-get update && apt-get install -y curl zsh git
+RUN apt-get update && apt-get install -y curl zsh
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 RUN useradd -m -s /bin/zsh lab
 RUN echo "source /opt/conda/etc/profile.d/conda.sh" >> /home/lab/.zshrc
