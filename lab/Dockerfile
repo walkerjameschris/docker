@@ -18,7 +18,6 @@ WORKDIR /home/lab/Documents
 RUN echo "source /opt/conda/etc/profile.d/conda.sh" >> /home/lab/.zshrc
 RUN echo "conda activate base" >> /home/lab/.zshrc
 COPY settings.json /home/lab/.local/share/code-server/User/settings.json
-COPY extensions.txt /home/lab/extensions.txt
 
 # Install extensions
 RUN code-server --install-extension ms-python.python
