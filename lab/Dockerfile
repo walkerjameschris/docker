@@ -22,7 +22,7 @@ COPY extensions.txt /home/lab/extensions.txt
 
 # Install extensions and fix ownership
 RUN mkdir -p /home/lab/.local/share/code-server/User
-RUN xargs -n 1 code-server --install-extension < /home/lab/extensions.txt
+RUN cat /home/lab/extensions.txt | while read ext; do code-server --install-extension "$ext"; done
 RUN chown -R lab:lab /home/lab
 
 # Run the server
