@@ -7,4 +7,4 @@ RUN useradd -m lab
 USER lab
 WORKDIR /home/lab/Documents
 EXPOSE 8080
-CMD ["code-server", "--bind-addr", "0.0.0.0:8080", "--auth", "none"]
+CMD ["bash", "-c", "source /opt/conda/etc/profile.d/conda.sh && code-server --bind-addr 0.0.0.0:8080 --auth none"]
