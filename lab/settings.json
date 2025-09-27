@@ -1,7 +1,6 @@
 {
   "workbench.colorTheme": "Default Dark+",
   "terminal.integrated.defaultProfile.linux": "zsh",
-  "python.languageServer": "Pylance",
 
   "python.analysis.typeCheckingMode": "basic",
   "python.analysis.autoImportCompletions": true,
@@ -31,3 +30,4 @@
   "python.testing.unittestEnabled": true,
   "python.testing.pytestEnabled": true
 }
+
