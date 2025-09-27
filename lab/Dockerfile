@@ -13,6 +13,7 @@ RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/c
 RUN useradd -m -s /bin/zsh lab
 RUN mkdir -p /home/lab/.local/share/code-server
 RUN chown -R lab:lab /home/lab/.local
+RUN chown -R lab:lab /home/lab/.local/share/code-server
 USER lab
 WORKDIR /home/lab/Documents
 
