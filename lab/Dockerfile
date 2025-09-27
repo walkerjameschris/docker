@@ -2,7 +2,7 @@
 FROM ubuntu:24.04
 
 # Install Miniconda to /root/miniconda3
-RUN apt-get install curl 
+RUN apt-get update && apt-get install -y --no-install-recommends curl 
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
 RUN bash miniconda.sh -b -p /root/miniconda3 &&
 RUN rm miniconda.sh
