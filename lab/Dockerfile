@@ -5,4 +5,4 @@ RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/c
 RUN pip install jupyterlab_theme_solarized_dark jupyterlab-lsp 'python-lsp-server[all]' mypy
 WORKDIR /home/jovyan/Documents
 EXPOSE 8888
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--no-browser", "--LabApp.token=''"]
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--no-browser", "--LabApp.token=''"]
