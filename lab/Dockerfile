@@ -14,6 +14,7 @@ RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/c
 # Install extensions (these will be installed for the root user)
 RUN code-server --install-extension ms-python.python
 RUN code-server --install-extension ms-pyright.pyright
+RUN code-server --install-extension ms-toolsai.jupyter
 
 # Configure root's shell to automatically activate the conda base environment
 RUN echo "source /opt/conda/etc/profile.d/conda.sh" >> /root/.zshrc
