@@ -2,7 +2,8 @@ FROM continuumio/miniconda3
 RUN pip install jupyterlab plotnine polars pyarrow scikit-learn gh
 RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cu129
 RUN pip install jupyterlab_theme_solarized_dark jupyterlab-lsp 'python-lsp-server[all]' mypy
-COPY overrides.json /opt/conda/share/jupyter/lab/settings/overrides.json
+RUN mkdir -p /home/jovyan/.jupyter/lab/user-settings/@jupyterlab/apputils-extension/
+COPY overrides.json home/jovyan/.jupyter/lab/user-settings/@jupyterlab/apputils-extension/themes.jupyterlab-settings
 WORKDIR /home/jovyan/Documents
 EXPOSE 8888
 CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--no-browser", "--LabApp.token=''"]
