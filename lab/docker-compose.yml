@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8888:8080"
+    volumes:
+      - $HOME/.config/gh/hosts.yml:/root/.config/gh/hosts.yml
     deploy:
       resources:
         reservations:
