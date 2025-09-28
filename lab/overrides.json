@@ -1,3 +1,5 @@
 {
-  "workbench.colorTheme": "Default Dark+",
+  "@jupyterlab/apputils-extension:themes": {
+    "theme": "Solarized Dark"
+  }
 }
