@@ -35,6 +35,13 @@ services:
         condition: service_started
     networks:
       - ollama_network
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
 
   ollama:
     image: ollama/ollama
