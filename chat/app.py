@@ -2,7 +2,10 @@ from chatlas import ChatOllama
 from shiny.express import ui
 
 # Might instead be ChatAnthropic, ChatOpenAI, or some other provider
-chat_client = ChatOllama(model="llama3")
+chat_client = ChatOllama(
+    model="llama3",
+    base_url="http://ollama:11434"
+)
 
 chat = ui.Chat(id="my_chat")
 chat.ui()
@@ -11,3 +14,4 @@ chat.ui()
 async def handle_user_input(user_input: str):
     response = await chat_client.stream_async(user_input)
     await chat.append_message_stream(response)
+
