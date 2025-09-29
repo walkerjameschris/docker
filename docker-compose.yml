@@ -1,5 +1,5 @@
 services:
-  lab_ollama:
+  lab:
     container_name: lab
     restart: unless-stopped
     build:
@@ -16,6 +16,20 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
+    depends_on:
+      ollama:
+        condition: service_started
+    networks:
+      - ollama_network
+
+  chat:
+    container_name: chat
+    restart: unless-stopped
+    build:
+      context: chat/
+      dockerfile: Dockerfile
+    ports:
+      - "88:88"
     depends_on:
       ollama:
         condition: service_started
@@ -53,4 +67,3 @@ volumes:
 networks:
   ollama_network:
     driver: bridge
-
