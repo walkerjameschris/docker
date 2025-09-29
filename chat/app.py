@@ -8,7 +8,7 @@ ui.page_opts(title="Hello Chat")
 # Create a chat instance, with an initial message
 chat = Chat(
     id="chat",
-    client=ChatOllama(model="llama3", base_url="http://treehouse:11434"),
+    client=ChatOllama(model="llama3", base_url="http://ollama:11434"),
     messages=[
         {"content": "Hello! How can I help you today?", "role": "assistant"},
     ],
@@ -30,3 +30,4 @@ async def handle_user_input(user_input: str):
 @render.code
 def message_state():
     return str(chat.messages())
+
