@@ -29,7 +29,7 @@ services:
       context: chat/
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "8080:80"
     depends_on:
       ollama:
         condition: service_started
