@@ -18,7 +18,7 @@ services:
               capabilities: [gpu]
     depends_on:
       ollama:
-        condition: service_healthy
+        condition: service_started
     networks:
       - ollama_network
 
@@ -53,3 +53,4 @@ volumes:
 networks:
   ollama_network:
     driver: bridge
+
