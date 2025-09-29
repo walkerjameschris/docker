@@ -22,11 +22,11 @@ services:
     networks:
       - ollama_network
 
-  chat:
-    container_name: chat
+  poplar:
+    container_name: poplar
     restart: unless-stopped
     build:
-      context: chat/
+      context: poplar/
       dockerfile: Dockerfile
     ports:
       - "8080:80"
