@@ -37,11 +37,11 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
-    entrypoint: >
+    command: >
       /bin/sh -c "
-        ollama serve & 
-        sleep 2 &
-        ollama pull gemma3:12b &
+        ollama serve &
+        sleep 10
+        ollama pull gemma3:12b
         wait
       "
     networks:
