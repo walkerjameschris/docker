@@ -37,14 +37,13 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
-    command: 
-      - /bin/sh
-      - -c
-      - |
-        ollama serve &
-        sleep 10
-        ollama pull gemma3:12b
+    entrypoint: >
+      /bin/sh -c "
+        ollama serve & 
+        sleep 2 && 
+        ollama pull llama3 &&
         wait
+      "
     networks:
       - ollama_network
 
