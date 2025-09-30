@@ -39,5 +39,4 @@ to get up and running.
 - Install [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
 - Set the NVIDIA toolkit to always run `sudo nvidia-ctk runtime configure --runtime=docker`
 - Reboot with `sudo reboot`
-- Run `lab/` with `sudo docker compose up --build`
-- Install [Steam](https://store.steampowered.com/about/) (you need `gdebi` with `sudo apt install gdebi`)
+- Run containers with `sudo docker compose up --build` in the root and in `immich/`
