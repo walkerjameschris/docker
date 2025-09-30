@@ -18,11 +18,10 @@ ui.page_opts(
 chat = ui.Chat("poplar")
 chat.ui(messages=[
     {
-        "content": "My name is Poplar, the `treehouse` assistant. Type `\status` to get server status",
+        "content": "My name is Poplar, the `treehouse` assistant.\n\nType `\status` to get server status.",
         "role": "assistant"
     }
 ])
-
 
 @chat.on_user_submit
 async def handle_user_input(user_input: str):
@@ -36,6 +35,7 @@ async def handle_user_input(user_input: str):
         """
     response = await chat_client.stream_async(user_input)
     await chat.append_message_stream(response)
+
 
 
 
