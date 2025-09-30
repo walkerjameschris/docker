@@ -1,5 +1,5 @@
 services:
-  
+
   ollama:
     image: ollama/ollama
     container_name: ollama
@@ -48,9 +48,11 @@ services:
     container_name: openwebui
     restart: unless-stopped
     ports:
-      - "3000:8080"
+      - "8080:8080" 
+    volumes:
+      - openwebui_data:/app/backend/data
     environment:
-      - OLLAMA_API_BASE_URL=http://ollama:11434
+      - OLLAMA_BASE_URL=http://ollama:11434
     depends_on:
       ollama:
         condition: service_started
@@ -59,6 +61,7 @@ services:
 
 volumes:
   ollama_models:
+  openwebui_data:
 
 networks:
   ollama_network:
