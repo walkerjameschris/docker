@@ -64,7 +64,7 @@ services:
         sleep 2 && 
         ollama pull llama3 &&
         sleep 2 &&
-        ollama pull gemma3:12b
+        ollama pull gemma3:12b &&
         wait
       "
     networks:
