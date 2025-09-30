@@ -22,8 +22,8 @@ to get up and running.
   - `sudo apt install gh`
   - `gh auth login`
 - Setup RAID 6 array with:
+  - Install `mdadm` with `sudo apt install mdadm`
   - **New System:**
-    - Install `mdadm` with `sudo apt install mdadm`
     - Ensure all 4 drives are **partition free** and named `sd[a-d]`
     - Create the array `sudo mdadm --create /dev/md0 --level=6 --raid-devices=4 /dev/sda /dev/sdb /dev/sdc /dev/sdd`
     - Determine the current location with `cat /proc/mdstat` (wait until complete, this can take a long time)
@@ -35,7 +35,7 @@ to get up and running.
   - **Finish Setup:**
     - Determine the block ID with `sudo blkid /dev/<location>`
     - Create a persistent mount with `sudo sh -c 'echo "UUID=<block ID> /mnt/raid ext4 defaults 0 0" >> /etc/fstab'`
-- Install [Docker](https://docs.docker.com/desktop/setup/install/linux/ubuntu/) with `apt`
+- Install [Docker](https://docs.docker.com/engine/install/ubuntu/) with `apt`
 - Install [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
 - Set the NVIDIA toolkit to always run `sudo nvidia-ctk runtime configure --runtime=docker`
 - Reboot with `sudo reboot`
