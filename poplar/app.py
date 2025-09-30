@@ -4,7 +4,7 @@ from shiny.express import ui
 from chatlas import ChatOllama
 
 chat_client = ChatOllama(
-    model="gemma3:12b",
+    model="llama3",
     base_url="http://ollama:11434",
     system_prompt="You are a helpful general knowledge assistant running on a home server."
 )
@@ -35,6 +35,7 @@ async def handle_user_input(user_input: str):
         """
     response = await chat_client.stream_async(user_input)
     await chat.append_message_stream(response)
+
 
 
 
