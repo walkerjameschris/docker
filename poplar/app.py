@@ -15,6 +15,8 @@ ui.page_opts(
     fillable_mobile=True
 )
 
+ui.tags.link(rel="icon", href="favicon.ico")
+
 chat = ui.Chat("poplar")
 chat.ui(messages=[
     {
@@ -35,6 +37,7 @@ async def handle_user_input(user_input: str):
         """
     response = await chat_client.stream_async(user_input)
     await chat.append_message_stream(response)
+
 
 
 
