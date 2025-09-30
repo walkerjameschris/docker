@@ -1,6 +1,7 @@
-from chatlas import ChatOllama
-from shiny.express import ui
+import shinyswatch
 from subprocess import run
+from shiny.express import ui
+from chatlas import ChatOllama
 
 messages = [
     {
@@ -19,7 +20,7 @@ chat_client = ChatOllama(
 )
 
 ui.page_opts(
-    theme="darkly",
+    theme=shinyswatch.theme.darkly,
     fillable=True,
     fillable_mobile=True
 )
@@ -35,4 +36,5 @@ async def handle_user_input(user_input: str):
         user_input = f"Tell me about my GPU utilization in a nice list: {gpu}"
     response = await chat_client.stream_async(user_input)
     await chat.append_message_stream(response)
+
 
