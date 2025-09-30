@@ -33,8 +33,14 @@ chat.ui(messages=messages)
 async def handle_user_input(user_input: str):
     if user_input == "\status":
         gpu = run("nvidia-smi", capture_output=True)
-        user_input = f"Tell me about my GPU utilization in a nice list: {gpu}"
+        user_input = f"""
+        I want you to describe my server utilization in a very
+        matter-of-fact format. Do not add additional context,
+        just report statitics in a very user friendly way. I
+        want to know temperatures and VRAM utilization: \n\n{gpu}
+        """
     response = await chat_client.stream_async(user_input)
     await chat.append_message_stream(response)
+
 
 
