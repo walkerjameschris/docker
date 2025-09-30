@@ -3,20 +3,10 @@ from subprocess import run
 from shiny.express import ui
 from chatlas import ChatOllama
 
-messages = [
-    {
-        "content": "You are a helpful general knowledge assistant running on a home server.",
-        "role": "system"
-    },
-    {
-        "content": "My name is Poplar, the `treehouse` assistant. Type \status to get server status",
-        "role": "assistant"
-    }
-]
-
 chat_client = ChatOllama(
     model="llama3",
-    base_url="http://ollama:11434"
+    base_url="http://ollama:11434",
+    system_prompt="You are a helpful general knowledge assistant running on a home server."
 )
 
 ui.page_opts(
@@ -26,7 +16,12 @@ ui.page_opts(
 )
 
 chat = ui.Chat("poplar")
-chat.ui(messages=messages)
+chat.ui(messages=[
+    {
+        "content": "My name is Poplar, the `treehouse` assistant. Type `\status` to get server status",
+        "role": "assistant"
+    }
+])
 
 
 @chat.on_user_submit
@@ -41,6 +36,7 @@ async def handle_user_input(user_input: str):
         """
     response = await chat_client.stream_async(user_input)
     await chat.append_message_stream(response)
+
 
 
 
