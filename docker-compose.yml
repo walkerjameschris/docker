@@ -6,6 +6,8 @@ services:
     restart: unless-stopped
     ports:
       - "11434:11434"
+    environment:
+      - OLLAMA_API_KEY=${OLLAMA_API_KEY}
     volumes:
       - ollama_models:/root/.ollama
     deploy:
