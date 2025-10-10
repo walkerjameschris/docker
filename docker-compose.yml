@@ -28,11 +28,8 @@ services:
       - "8888:8888"
     volumes:
       - $HOME/.config/gh/hosts.yml:/root/.config/gh/hosts.yml
-      - /home/${USER}/.Xauthority:/root/.Xauthority:ro
-      - /tmp/.X11-unix:/tmp/.X11-unix
     environment:
       - OLLAMA_HOST=http://ollama:11434
-      - DISPLAY=${DISPLAY}
     deploy:
       resources:
         reservations:
