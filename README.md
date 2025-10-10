@@ -36,6 +36,7 @@ to get up and running.
     - Determine the block ID with `sudo blkid /dev/<location>`
     - Create a persistent mount with `sudo sh -c 'echo "UUID=<block ID> /mnt/raid ext4 defaults 0 0" >> /etc/fstab'`
 - Install [Docker](https://docs.docker.com/engine/install/ubuntu/) with `apt`
+    - Be sure to run the post install steps (e.g., so you can run `docker` without `sudo`)
 - Install [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
 - Set the NVIDIA toolkit to always run `sudo nvidia-ctk runtime configure --runtime=docker`
 - Reboot with `sudo reboot`
