@@ -4,3 +4,4 @@ RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/c
 ENV SHELL=/bin/bash
 ENV TERM=xterm-256color
 WORKDIR /home/vscode/Documents
+CMD ["/bin/bash", "-c", "trap : TERM INT; sleep infinity & wait"]
