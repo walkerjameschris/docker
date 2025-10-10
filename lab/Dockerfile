@@ -9,6 +9,7 @@ RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/c
 RUN pip install jupyterlab-lsp 'python-lsp-server[all]' mypy
 RUN apt-get update && apt-get install -y build-essential cmake libsfml-dev
 RUN conda install --channel conda-forge --yes r-base r-tidyverse
+RUN Rscript -c "install.packages('IRkernel'); IRkernel::installspec(user = TRUE)"
 
 RUN useradd -m lab
 USER lab
