@@ -1,6 +1,6 @@
 FROM continuumio/miniconda3
 
-RUN groupadd -r users && useradd -r -u 1000 -g users lab
+RUN useradd -m lab
 USER lab
 WORKDIR /home/lab/mnt/
 
