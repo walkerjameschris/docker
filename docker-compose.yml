@@ -24,10 +24,6 @@ services:
     build:
       context: lab/
       dockerfile: Dockerfile
-    ports:
-      - "8888:8888"
-    volumes:
-      - $HOME/.config/gh/hosts.yml:/root/.config/gh/hosts.yml
     environment:
       - OLLAMA_HOST=http://ollama:11434
     deploy:
