@@ -1,0 +1,7 @@
+{
+  "name": "lab",
+  "dockerComposeFile": "../../docker-compose.yml",
+  "service": "lab",
+  "workspaceFolder": "/workspaces/lab"
+}
+
