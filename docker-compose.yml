@@ -20,7 +20,7 @@ services:
 
   lab:
     build:
-      context: ./lab/.devcontainer/ 
+      context: lab/.devcontainer/
       dockerfile: Dockerfile
     container_name: lab
     restart: unless-stopped
