@@ -20,8 +20,8 @@ services:
 
   lab:
     build:
-      context: . 
-      dockerfile: lab/.devcontainer/Dockerfile
+      context: ./lab/.devcontainer/ 
+      dockerfile: Dockerfile
     container_name: lab
     restart: unless-stopped
     volumes:
