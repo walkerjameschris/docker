@@ -1,2 +1,5 @@
+lab/*
+!lab/.devcontainer/
+lab/.devcontainer/*
 !lab/.devcontainer/devcontainer.json
-lab*
+!lab/.devcontainer/Dockerfile

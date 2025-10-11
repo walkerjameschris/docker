@@ -1,20 +1,13 @@
 {
     "name": "Lab",
-    
-    "dockerComposeFile": "../../docker-compose.yml", 
-    "service": "lab", 
-    "workspaceFolder": "/workspace", 
-    
+    "dockerComposeFile": "../../docker-compose.yml",
+    "service": "lab",
+    "workspaceFolder": "/workspace",
     "extensions": [
-        "ms-python.python",              
-        "ms-toolsai.jupyter",            
-        "ms-azuretools.vscode-docker"    
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "ms-azuretools.vscode-docker"
     ],
-
     "forwardPorts": [3000],
-    
-    "postCreateCommand": "pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128 \\
-                        && conda install -y ipython jupyterlab polars plotnine",
-    
     "remoteUser": "vscode"
 }

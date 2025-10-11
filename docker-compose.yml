@@ -19,7 +19,9 @@ services:
       - ollama_network
 
   lab:
-    image: mcr.microsoft.com/devcontainers/anaconda
+    build:
+      context: . 
+      dockerfile: lab/.devcontainer/Dockerfile
     container_name: lab
     restart: unless-stopped
     volumes:
