@@ -1,0 +1,14 @@
+{
+    "name": "Lab",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "dev-env",
+    "workspaceFolder": "/workspace", 
+    "extensions": [
+        "ms-python.python",
+        "ms-vscode.cpptools",
+        "ms-azuretools.vscode-docker"
+    ],
+    "forwardPorts": [3000],
+    "postCreateCommand": "pip install polars plotnine",
+    "remoteUser": "vscode"
+}

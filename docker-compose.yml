@@ -19,11 +19,12 @@ services:
       - ollama_network
 
   lab:
+    image: mcr.microsoft.com/devcontainers/anaconda
     container_name: lab
     restart: unless-stopped
-    build:
-      context: lab/
-      dockerfile: Dockerfile
+    volumes:
+      - ./lab:/workspace:cached
+    command: /bin/bash -c "while sleep 1000; do :; done"
     environment:
       - OLLAMA_HOST=http://ollama:11434
     deploy:
