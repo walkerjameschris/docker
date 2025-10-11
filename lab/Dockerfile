@@ -1,3 +1,6 @@
-FROM mcr.microsoft.com/devcontainers/anaconda
-# RUN pip install plotnine polars pyarrow scikit-learn ollama
+FROM continuumio/anaconda
+RUN pip install polars plotnine
 # RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cu129
+WORKDIR /mnt/
+CMD ["tail", "-f", "/dev/null"]
+

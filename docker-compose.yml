@@ -38,7 +38,6 @@ services:
         condition: service_started
     networks:
       - ollama_network
-    command: sleep infinity
 
   openwebui:
     image: ghcr.io/open-webui/open-webui:main-slim
