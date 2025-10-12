@@ -2,10 +2,11 @@ services:
   lab:
     build: .
     container_name: lab
+    user: root
     ports:
       - "8888:8888"
     volumes:
-      - ~/Documents:/home/jovyan/work/
+      - ~/Documents:/home/jovyan/
     environment:
       - JUPYTER_ENABLE_LAB=yes
       - JUPYTER_TOKEN=
