@@ -2,16 +2,12 @@ services:
   lab:
     build: .
     container_name: lab
-    user: root
     ports:
       - "8888:8888"
     volumes:
       - ~/Documents:/home/jovyan/
     environment:
-      - JUPYTER_ENABLE_LAB=yes
-      - JUPYTER_TOKEN=
       - OLLAMA_HOST=http://ollama:11434
-    command: start-notebook.sh --NotebookApp.token='' --NotebookApp.password=''
     depends_on:
       ollama:
         condition: service_started
