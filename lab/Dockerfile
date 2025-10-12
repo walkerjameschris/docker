@@ -1,6 +1,6 @@
 FROM continuumio/miniconda3
 RUN conda init bash
-RUN pip install jupyterlab plotnine polars pyarrow scikit-learn
+RUN pip install jupyterlab plotnine polars pyarrow scikit-learn ollama
 RUN pip install torch --index-url https://download.pytorch.org/whl/cu129
 RUN pip install jupyterlab-lsp 'python-lsp-server[all]' mypy
 ENV SHELL=/bin/bash
