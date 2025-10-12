@@ -1,13 +1,20 @@
 services:
-
-  ollama:
-    image: ollama/ollama
-    container_name: ollama
-    restart: unless-stopped
+  lab:
+    build: .
+    container_name: lab
     ports:
-      - "11434:11434"
+      - "8888:8888"
     volumes:
-      - ollama_models:/root/.ollama
+      - ~/Documents:/home/jovyan/
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=
+      - OLLAMA_HOST=http://ollama:11434
+    command: start-notebook.sh --NotebookApp.token='' --NotebookApp.password=''
+    depends_on:
+      ollama:
+        condition: service_started
+    restart: unless-stopped
     deploy:
       resources:
         reservations:
@@ -18,17 +25,14 @@ services:
     networks:
       - ollama_network
 
-  lab:
-    build:
-      context: ./lab
-    container_name: lab
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
     ports:
-      - "8888:8888"
+      - "11434:11434"
     volumes:
-      - ~/Documents:/home/jovyan/Documents/
-    restart: unless-stopped 
-    environment:
-      - OLLAMA_HOST=http://ollama:11434
+      - ollama_models:/root/.ollama
+    restart: unless-stopped
     deploy:
       resources:
         reservations:
@@ -36,15 +40,12 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
-    depends_on:
-      ollama:
-        condition: service_started
     networks:
       - ollama_network
 
   openwebui:
     image: ghcr.io/open-webui/open-webui:main-slim
-    restart: unless-stopped
+    container_name: openwebui
     ports:
       - "3000:8080"
     volumes:
@@ -52,8 +53,7 @@ services:
     depends_on:
       ollama:
         condition: service_started
-    networks:
-      - ollama_network
+    restart: unless-stopped
     deploy:
       resources:
         reservations:
@@ -61,6 +61,8 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
+    networks:
+      - ollama_network
 
 volumes:
   ollama_models:
