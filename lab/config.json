@@ -1,0 +1,14 @@
+{
+    "model_provider_id": "ollama:codellama",
+    "embeddings_provider_id": "ollama:mxbai-embed-large",
+    "send_with_shift_enter": false,
+    "fields": {
+        "ollama:codellama": {}
+    },
+    "api_keys": {},
+    "completions_model_provider_id": null,
+    "completions_fields": {},
+    "embeddings_fields": {
+        "ollama:mxbai-embed-large": {}
+    }
+}

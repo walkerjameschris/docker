@@ -8,8 +8,8 @@ RUN pip install jupyterlab-lsp "python-lsp-server[all]" mypy "jupyter-ai[all]"
 
 # Workspace settings
 RUN conda init bash
-ENV SHELL=/bin/bash
 COPY overrides.json /opt/conda/share/jupyter/lab/settings/overrides.json
+COPY config.json /root/.local/share/jupyter/jupyter_ai/config.json
 WORKDIR /home/jovyan/work/
 EXPOSE 8888
 

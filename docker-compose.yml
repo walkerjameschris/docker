@@ -28,6 +28,7 @@ services:
       - ~/Documents:/home/jovyan/work/
     environment:
       - OLLAMA_HOST=http://ollama:11434
+      - SHELL=/bin/bash
     depends_on:
       ollama:
         condition: service_started
