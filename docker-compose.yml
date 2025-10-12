@@ -23,9 +23,9 @@ services:
       context: ./lab
     container_name: lab
     ports:
-      - "8000:8000"
+      - "8888:8888"
     volumes:
-      - ~/Documents:/workspace
+      - ~/Documents:/home/jovyan/Documents/
     restart: unless-stopped 
     environment:
       - OLLAMA_HOST=http://ollama:11434
