@@ -5,7 +5,7 @@ services:
     ports:
       - "8888:8888"
     volumes:
-      - ~/Documents:/home/jovyan/
+      - ~/Documents:/home/jovyan/work/
     environment:
       - JUPYTER_ENABLE_LAB=yes
       - JUPYTER_TOKEN=
