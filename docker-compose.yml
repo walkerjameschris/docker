@@ -24,7 +24,7 @@ services:
     ports:
       - "8888:8888"
     volumes:
-      - ~/Documents:/home/jovyan/
+      - ~/Documents:/home/jovyan/work/
     environment:
       - OLLAMA_HOST=http://ollama:11434
     depends_on:
