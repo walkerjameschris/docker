@@ -1,5 +1,5 @@
 {
-    "model_provider_id": "ollama:codellama",
+    "model_provider_id": "ollama:codegemma:instruct",
     "embeddings_provider_id": "ollama:mxbai-embed-large",
     "send_with_shift_enter": false,
     "fields": {
