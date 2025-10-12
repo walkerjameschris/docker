@@ -1,20 +1,10 @@
-# ./python-dev/Dockerfile
-FROM python:3.12-slim
-
-# Set up a working directory
-WORKDIR /workspace
-
-# Install basic dev tools
-RUN apt-get update && apt-get install -y \
-    git \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
-
-# Optional: pre-install common Python tools
-RUN pip install --no-cache-dir pip setuptools wheel
-
-# Expose port for Positron or HTTP dev server
-EXPOSE 8000
-
-# Start a simple shell on container run (override with your own CMD if needed)
-CMD [ "tail", "-f", "/dev/null" ]
+FROM continuumio/miniconda3
+RUN conda init bash
+RUN pip install jupyterlab plotnine polars pyarrow scikit-learn
+RUN pip install torch --index-url https://download.pytorch.org/whl/cu129
+RUN pip install jupyterlab-lsp 'python-lsp-server[all]' mypy
+ENV SHELL=/bin/bash
+ENV TERM=xterm-256color
+WORKDIR /home/jovyan/Documents
+EXPOSE 8888
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--no-browser", "--LabApp.token=''"]
