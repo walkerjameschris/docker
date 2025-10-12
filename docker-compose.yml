@@ -18,18 +18,15 @@ services:
     networks:
       - ollama_network
 
-  tidyverse:
+  lab:
     build:
-      context: "./lab/"
-      dockerfile: "Dockerfile"
+      context: ./lab
+    container_name: lab
     ports:
-      - "8787:8787"
-      - "2222:22"
-    environment:
-      - DISABLE_AUTH=true
+      - "8000:8000"
     volumes:
-      - ~/Documents/:/home/rstudio/project
-      - ~/.ssh/id_rsa.pub:/home/rstudio/.ssh/authorized_keys:ro 
+      - ~/Documents:/workspace
+    restart: unless-stopped 
     environment:
       - OLLAMA_HOST=http://ollama:11434
     deploy:

@@ -1,5 +1,0 @@
-lab/*
-!lab/.devcontainer/
-lab/.devcontainer/*
-!lab/.devcontainer/devcontainer.json
-!lab/.devcontainer/Dockerfile
