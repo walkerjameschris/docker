@@ -1,4 +1,9 @@
-FROM quay.io/jupyter/pytorch-notebook:cuda12-python-3.11.8
-RUN pip install polars plotnine pyarrow
-RUN pip install jupyterlab-lsp "python-lsp-server[all]" mypy jupyter-ai
-
+FROM continuumio/miniconda3
+RUN conda init bash
+RUN pip install jupyterlab plotnine polars pyarrow scikit-learn ollama
+RUN pip install torch --index-url https://download.pytorch.org/whl/cu129
+RUN pip install jupyterlab-lsp "python-lsp-server[all]" mypy "jupyter-ai[all]"
+ENV SHELL=/bin/bash
+WORKDIR /home/jovyan/
+EXPOSE 8888
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--no-browser", "--LabApp.token=''"]
