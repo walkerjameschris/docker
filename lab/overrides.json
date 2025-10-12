@@ -1,5 +1,8 @@
 {
   "@jupyterlab/apputils-extension:themes": {
     "theme": "JupyterLab Dark"
+  },
+  "AiExtension": {
+     "default_completions_model": "ollama:codellama"
   }
 }
