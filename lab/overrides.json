@@ -1,5 +1,10 @@
 {
   "@jupyterlab/apputils-extension:themes": {
     "theme": "JupyterLab Dark"
+  },
+  "@jupyterlab/extensionmanager-extension:plugin": {
+    "enabled": true,
+    "showExtensionManager": true,
+    "disableValidator": true
   }
 }
