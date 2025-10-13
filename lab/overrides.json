@@ -2,6 +2,9 @@
   "@jupyterlab/apputils-extension:themes": {
     "theme": "JupyterLab Dark"
   },
+  "@jupyterlab/extensionmanager-extension": {
+    "enabled": true
+  },
   "@jupyterlab/extensionmanager-extension:plugin": {
     "enabled": true,
     "showExtensionManager": true,
