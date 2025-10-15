@@ -15,7 +15,7 @@ EXPOSE 8888
 
 # Render pipeline
 RUN apt-get update && apt-get install -y libegl1-mesa-dev libgl1-mesa-dri libxcb-xfixes0-dev mesa-vulkan-drivers
-RUN apt-get update && apt-get install -y libjpeg-turbo8-dev libturbojpeg0-dev
+RUN conda install -c conda-forge libjpeg-turbo
 RUN pip install jupyter_rfb simplejpeg pygfx
 ENV PYGFX_WGPU_ADAPTER_NAME="llvmpipe"
 
