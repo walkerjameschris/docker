@@ -14,8 +14,8 @@ WORKDIR /home/jovyan/work/
 EXPOSE 8888
 
 # Render pipeline
-RUN apt-get install libegl1-mesa-dev libgl1-mesa-dri libxcb-xfixes0-dev mesa-vulkan-drivers
-RUN apt-get install libjpeg-turbo8-dev libturbojpeg0-dev
+RUN apt-get update && apt-get install libegl1-mesa-dev libgl1-mesa-dri libxcb-xfixes0-dev mesa-vulkan-drivers
+RUN apt-get update && apt-get install libjpeg-turbo8-dev libturbojpeg0-dev
 RUN pip install jupyter_rfb simplejpeg pygfx
 ENV PYGFX_WGPU_ADAPTER_NAME="llvmpipe"
 
