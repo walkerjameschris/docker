@@ -13,5 +13,11 @@ COPY config.json /root/.local/share/jupyter/jupyter_ai/config.json
 WORKDIR /home/jovyan/work/
 EXPOSE 8888
 
+# Render pipeline
+RUN apt-get install libegl1-mesa-dev libgl1-mesa-dri libxcb-xfixes0-dev mesa-vulkan-drivers
+RUN apt-get install libjpeg-turbo8-dev libturbojpeg0-dev
+RUN pip install jupyter_rfb simplejpeg pygfx
+ENV PYGFX_WGPU_ADAPTER_NAME="llvmpipe"
+
 # Run image
 CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--no-browser", "--LabApp.token=''"]
