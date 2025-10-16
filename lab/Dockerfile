@@ -5,7 +5,8 @@ FROM continuumio/miniconda3
 RUN pip install torch --index-url https://download.pytorch.org/whl/cu129
 RUN pip install jupyterlab plotnine polars pyarrow scikit-learn ollama
 RUN pip install jupyterlab-lsp "python-lsp-server[all]" mypy
-RUN apt-get install curl && curl -LsSf https://aider.chat/install.sh | sh
+RUN apt-get update && apt-get install curl
+RUN curl -LsSf https://aider.chat/install.sh | sh
 
 # Workspace settings
 RUN conda init bash
