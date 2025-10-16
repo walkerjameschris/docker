@@ -8,8 +8,8 @@
         "baseURL": "http://ollama:11434/v1"
       },
       "models": {
-        "gemma3:12b": {
-          "name": "Gemma 3 12B"
+        "mistral-nemo:12b": {
+          "name": "Mistral Nemo 12b"
         }
       }
     }
