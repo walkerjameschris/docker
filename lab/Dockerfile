@@ -5,7 +5,7 @@ FROM continuumio/miniconda3
 RUN pip install torch --index-url https://download.pytorch.org/whl/cu129
 RUN pip install jupyterlab plotnine polars pyarrow scikit-learn ollama
 RUN pip install jupyterlab-lsp "python-lsp-server[all]" mypy
-RUN python -m pip install aider-install && python aider-install
+RUN python -m pip install aider-install && aider-install
 RUN export PATH="/root/.local/bin:$PATH"
 
 # Workspace settings
