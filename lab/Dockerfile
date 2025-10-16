@@ -5,12 +5,13 @@ FROM continuumio/miniconda3
 RUN pip install torch --index-url https://download.pytorch.org/whl/cu129
 RUN pip install jupyterlab plotnine polars pyarrow scikit-learn ollama
 RUN pip install jupyterlab-lsp "python-lsp-server[all]" mypy
-RUN apt-get update && apt-get install -y curl unzip
-RUN curl -fsSL https://opencode.ai/install | bash
 
 # Workspace settings
 RUN conda init bash
+RUN apt-get update && apt-get install -y curl unzip
+RUN curl -fsSL https://opencode.ai/install | bash
 COPY overrides.json /opt/conda/share/jupyter/lab/settings/overrides.json
+COPY opencode.json ~/.config/opencode/opencode.json
 WORKDIR /home/jovyan/work/
 EXPOSE 8888
 
