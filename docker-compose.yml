@@ -22,14 +22,13 @@ services:
     build:
       context: ./lab
     container_name: lab
-    ports:
-      - "8888:8888"
+    stdin_open: true
+    tty: true
     volumes:
-      - ~/Documents:/home/jovyan/work/
+      - ~/Documents:/home/Documents/
     environment:
       - OLLAMA_API_BASE=http://ollama:11434
       - OLLAMA_HOST=http://ollama:11434
-      - AIDER_DARK_MODE=true
       - TERM=xterm-256color
       - SHELL=/bin/bash
     depends_on:
