@@ -8,11 +8,10 @@
         "baseURL": "http://ollama:11434/v1"
       },
       "models": {
-        "qwen2.5-coder:14b": {
-          "name": "Quen 2.5 Coder 14b"
+        "mistral-nemo:12b": {
+          "name": "Mistral Nemo 12b"
         }
       }
     }
-  },
-  "model": "ollama/gemma3:12b"
+  }
 }
