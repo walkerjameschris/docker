@@ -7,5 +7,6 @@ RUN echo "PARAMETER temperature 0.25" >> /tmp/Modelfile
 RUN echo "PARAMETER num_ctx 16384" >> /tmp/Modelfile
 
 # Pull models
+RUN ollama serve
 RUN ollama create mistral-nemo:12b-16k -f /tmp/Modelfile
 RUN ollama pull mxbai-embed-large
