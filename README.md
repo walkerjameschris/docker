@@ -7,6 +7,7 @@ These steps define the primary requirements needed by the system
 to get up and running.
 
 - Settings >> Power >> Performance >> Screen Blank (Never)
+- Install `micro` with `sudo apt install micro`
 - Install NVIDIA driver with:
   - Determine driver with `sudo ubuntu-drivers devices`
   - Update lists with `sudo apt-get update`
