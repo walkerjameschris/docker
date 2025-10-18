@@ -9,8 +9,8 @@
         "baseURL": "http://ollama:11434/v1"
       },
       "models": {
-        "mistral-nemo:12b-16k": {
-          "name": "Mistral Nemo 12b-16k"
+        "mistral-nemo:12b": {
+          "name": "Mistral Nemo 12b"
         }
       }
     }
