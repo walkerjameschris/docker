@@ -9,8 +9,8 @@
         "baseURL": "http://ollama:11434/v1"
       },
       "models": {
-        "qwen3:8b-16k": {
-          "name": "Qwen3 8b-16k"
+        "mistral-nemo:12b-16k": {
+          "name": "Mistral Nemo 12b-16k"
         }
       }
     }
