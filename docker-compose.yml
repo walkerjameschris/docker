@@ -1,13 +1,14 @@
 services:
 
   ollama:
-    build:
-      context: ./ollama
+    image: ollama/ollama
     container_name: ollama
     ports:
       - "11434:11434"
     volumes:
       - ollama_models:/root/.ollama
+    environment:
+      - OLLAMA_CONTEXT_LENGTH=16384
     restart: unless-stopped
     deploy:
       resources:
